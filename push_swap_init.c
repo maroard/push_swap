@@ -6,13 +6,22 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/01 19:54:43 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/09 18:55:21 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 #include <limits.h>
+
+static int	link_nodes(size_t *i, char **args, t_stack **stack_A)
+{
+	if (!check_arg(args[*i]))
+		return (0);
+	node_add_back(&((*stack_A)->top), create_node(ft_atoi(args[*i++])));
+	(*stack_A)->size++;
+	return (1);
+}
 
 static int	is_number(char *arg)
 {
@@ -43,26 +52,25 @@ static int	check_arg(char *arg)
 	return (0);
 }
 
-static int	*int_split(char *arg, t_stack *stack_A)
+static t_stack	*args_split(char *arg)
 {
 	size_t	i;
 	char	**tab;
-	int		*stack_A;
+	t_stack	*stack_A;
+
 	i = 0;
 	tab = ft_split(arg, ' ');
-	while (tab[i])
-		i++;
-	stack_A = malloc(i * sizeof(int));
+	stack_A = malloc(sizeof(t_stack));
 	if (!stack_A)
-		return (NULL);
-	i = 0;
+		return (clear_stack(stack_A->top, stack_A));
+	stack_A->top = create_node(ft_atoi(tab[i++]));
+	if (!stack_A->top)
+		return (clear_stack(stack_A->top, stack_A));
+	stack_A->size = 1;
 	while (tab[i])
 	{
-		if (check_arg(tab[i]) == 0)
-			return (NULL);
-		stack_A[i] = ft_atoll(tab[i]);
-		ft_printf("%d\n", stack_A[i]);
-		i++;
+		if (!link_nodes(&i, tab, &stack_A))
+			return (clear_stack(stack_A->top, stack_A));
 	}
 	while (i--)
 		free(tab[i]);
@@ -70,29 +78,25 @@ static int	*int_split(char *arg, t_stack *stack_A)
 	return (stack_A);
 }
 
-t_stack	create_stack_A(int argc, char *argv[], t_stack *stack_A)
+t_stack	*create_stack_A(int argc, char *argv[])
 {
-	int	i;
+	size_t	i;
+	t_stack	*stack_A;
 
-	i = 1;
 	if (argc == 2)
+		return (args_split(argv[1]));
+	i = 1;
+	stack_A = malloc(sizeof(t_stack));
+	if (!stack_A || !check_arg(argv[i]))
+		return (clear_stack(stack_A->top, stack_A));
+	stack_A->top = create_node(ft_atoi(argv[i++]));
+	if (!stack_A->top)
+		return (clear_stack(stack_A->top, stack_A));
+	stack_A->size = 1;
+	while (i < (size_t)(argc))
 	{
-		int_split(argv[1], &stack_A);
-		return (*stack_A);
+		if (!link_nodes(&i, argv, &stack_A))
+			return (clear_stack(stack_A->top, stack_A));
 	}
-	stack_A = malloc ((argc - 1) * sizeof(t_stack));
-	if (!stack_A)
-		return ;
-	if (check_arg(argv[i]) == 0)
-		return ;
-	stack_A->top = ft_atoi(argv[i++]);
-	stack_A->size++;
-	while (i < argc - 1)
-	{
-		if (check_arg(argv[i]) == 0)
-			return ;
-		stack_A = ft_atoi(argv[i++]);
-		ft_printf("%d\n", stack_A[i]);
-	}
-	return (*stack_A);
+	return (stack_A);
 }
