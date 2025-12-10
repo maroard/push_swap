@@ -6,36 +6,48 @@
 #    By: maroard <maroard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 11:16:55 by maroard           #+#    #+#              #
-#    Updated: 2025/12/01 15:10:20 by maroard          ###   ########.fr        #
+#    Updated: 2025/12/10 14:30:37 by maroard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-AR          = ar rcs
-NAME        = push_swap
-CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror
-RM          = rm -f
+AR			= ar rcs
+NAME		= push_swap
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
+RM			= rm -f
 
-LIBFT_DIR   = libft
-LIBFT       = $(LIBFT_DIR)/libft.a
+LIBFT_DIR	= libft
+LIBFT		= $(LIBFT_DIR)/libft.a
 
-SRC         = $(wildcard *.c)
-OBJ         = $(SRC:.c=.o)
+SRC_DIR		= src
+OBJ_DIR		= obj
+
+SRC_FILES	= $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES	= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C libft
-	$(CC) $(OBJ) libft/libft.a -o $(NAME)
+$(NAME): $(OBJ_FILES) $(LIBFT)
+	$(CC) $(OBJ_FILES) $(LIBFT) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	$(RM) $(OBJ)
+	$(RM) $(OBJ_FILES)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME)
+	$(RM) -r $(OBJ_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

@@ -6,11 +6,11 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/10 11:22:10 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/10 16:23:31 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdlib.h>
 
 // void	push_swap(int **stack_A)
@@ -24,7 +24,10 @@ int	push_swap_init(int argc, char *argv[])
 	
 	stack_A = create_stack_A(argc, argv);
 	if (!stack_A)
+	{
+		clear_stack(&(stack_A->top), stack_A);
 		return (0);
+	}
 	print_stack(stack_A->top);
 	clear_stack(&(stack_A->top), stack_A);
 	return (1);
