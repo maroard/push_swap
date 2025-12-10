@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:30 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/09 18:54:13 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/10 11:06:34 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_stack	*clear_stack(t_node **top, t_stack *stack)
 {
 	t_node	*temp;
 
-	if (!top || !*top)
-		return ;
 	while (*top != NULL)
 	{
 		temp = (*top)->next;

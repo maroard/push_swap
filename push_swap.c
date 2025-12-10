@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/09 18:56:26 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/10 11:22:10 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	push_swap_init(int argc, char *argv[])
 	if (!stack_A)
 		return (0);
 	print_stack(stack_A->top);
+	clear_stack(&(stack_A->top), stack_A);
 	return (1);
 }
 
