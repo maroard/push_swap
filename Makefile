@@ -6,14 +6,14 @@
 #    By: maroard <maroard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 11:16:55 by maroard           #+#    #+#              #
-#    Updated: 2025/12/10 14:30:37 by maroard          ###   ########.fr        #
+#    Updated: 2025/12/11 11:01:30 by maroard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 AR			= ar rcs
 NAME		= push_swap
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 RM			= rm -f
 
 LIBFT_DIR	= libft

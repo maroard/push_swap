@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/10 16:03:41 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/11 11:28:00 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static t_stack	*args_split(char *arg)
 		return (free_tab(tab));
 	stack_A = malloc(sizeof(t_stack));
 	if (!stack_A || !is_number(tab[0]) || !(ft_atoll(tab[0]) >= INT_MIN && ft_atoll(tab[0]) <= INT_MAX))
-		return (NULL);
+		return (clear_stack(&(stack_A->top), stack_A));
 	stack_A->top = create_node(ft_atoi(tab[i++]));
 	if (!stack_A->top)
 		return (clear_stack(&(stack_A->top), stack_A));
@@ -92,12 +92,12 @@ t_stack	*create_stack_A(int argc, char *argv[])
 	size_t	i;
 	t_stack	*stack_A;
 
-	if (argc == 2 && ft_strchr(argv[1], ' ') != NULL)
+	if (argc == 2 && ft_strchr(argv[1], ' '))
 		return (args_split(argv[1]));
 	i = 1;
 	stack_A = malloc(sizeof(t_stack));
 	if (!stack_A || !is_number(argv[1]) || !(ft_atoll(argv[1]) >= INT_MIN && ft_atoll(argv[1]) <= INT_MAX))
-		return (NULL);
+		return (clear_stack(&(stack_A->top), stack_A));
 	stack_A->top = create_node(ft_atoi(argv[i++]));
 	if (!stack_A->top)
 		return (clear_stack(&(stack_A->top), stack_A));
