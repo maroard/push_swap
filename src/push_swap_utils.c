@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:30 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/10 12:55:40 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/11 12:05:46 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_stack	*clear_stack(t_node **top, t_stack *stack)
 
 void	print_stack(t_node *list)
 {
-	ft_printf("Stack A:\n\n");
+	ft_printf("Stack A:\n");
 	while (list != NULL)
 	{
 		ft_printf("[ %d ]\n", list->content);
