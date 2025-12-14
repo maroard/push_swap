@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/11 15:23:48 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/11 16:51:36 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	push_swap_init(int argc, char *argv[], t_stack **A)
 int main(int argc, char *argv[])
 {
 	t_stack	*A;
+	t_stack	*B;
 
 	if (argc == 1 || !push_swap_init(argc, argv, &A))
 	{

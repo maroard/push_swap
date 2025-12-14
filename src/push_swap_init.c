@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/11 13:27:17 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/11 16:46:58 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ static void	*free_tab(char **tab)
         return (NULL);
     i = 0;
     while (tab[i])
-    {
-        free(tab[i]);
-        i++;
-    }
+        free(tab[i++]);
     free(tab);
 	return (NULL);
 }
