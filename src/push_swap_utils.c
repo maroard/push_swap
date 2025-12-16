@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:30 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/15 18:47:53 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/16 14:36:16 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ t_node	*create_node(int content)
 	node->content = content;
 	node->next = NULL;
 	return (node);
+}
+
+t_node	*prev_last_node(t_node *top)
+{
+	while (top->next->next != NULL)
+		top = top->next;
+	return (top);
 }
 
 t_node	*last_node(t_node *top)

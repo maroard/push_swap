@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/15 18:36:38 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/16 14:26:36 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,8 @@ int main(int argc, char *argv[])
 	B->top = NULL;
 	B->size = 0;
 	print_stack(A->top, 'A');
-	print_stack(B->top, 'B');
-	push_B(&A, &B);
+	reverse_rotate_A(&A, 0);
 	print_stack(A->top, 'A');
-	print_stack(B->top, 'B');
 	clear_stack(&(A->top), A);
 	clear_stack(&(B->top), B);
 	return (0);
