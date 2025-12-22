@@ -6,26 +6,11 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:07:01 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/18 17:02:38 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/22 18:53:10 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-
-void	*clear_stack(t_node **top, t_stack *A_or_B)
-{
-	t_node	*temp;
-
-	while (*top)
-	{
-		temp = (*top)->next;
-		free(*top);
-		*top = temp;
-	}
-	free(A_or_B);
-	return (NULL);
-}
 
 void	print_stack(t_node *top, char A_or_B)
 {
@@ -59,13 +44,30 @@ int	is_number(char *arg)
 	return (1);
 }
 
-int	stack_is_sorted(t_stack **A_or_B)
+int	top_is_extremum(t_stack *A_or_B, t_bool min, t_bool max)
 {
 	t_node	*check;
 
-	if (!(*A_or_B) || !(*A_or_B)->top)
+	if (!(A_or_B->top->next))
 		return (1);
-	check = (*A_or_B)->top;
+	check = A_or_B->top->next;
+	while (check)
+	{
+		if ((min == TRUE && A_or_B->top->content > check->content)
+			|| (max == TRUE && A_or_B->top->content < check->content))
+			return (0);
+		check = check->next;
+	}
+	return (1);
+}
+
+int	stack_a_is_sorted(t_stack *A, t_stack *B)
+{
+	t_node	*check;
+
+	if (!A->top || !A->top->next || B->top)
+		return (0);
+	check = (A)->top;
 	while (check->next)
 	{
 		if (check->content > check->next->content)

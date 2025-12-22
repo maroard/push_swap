@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:14:40 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/17 19:15:32 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/22 13:25:05 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	reverse_rotate_a(t_stack **a, t_bool rrr)
 	if (!(*a) || !(*a)->top || !(*a)->top->next)
 		return (0);
 	temp = last_node((*a)->top);
-	prev_last_node((*a)->top)->next = NULL;
+	(last_node((*a)->top)->prev)->next = NULL;
 	node_add_front(&((*a)->top), temp);
 	if (rrr == FALSE)
 		ft_printf("rra\n");
@@ -33,7 +33,7 @@ int	reverse_rotate_b(t_stack **b, t_bool rrr)
 	if (!(*b) || !(*b)->top || !(*b)->top->next)
 		return (0);
 	temp = last_node((*b)->top);
-	prev_last_node((*b)->top)->next = NULL;
+	(last_node((*b)->top)->prev)->next = NULL;
 	node_add_front(&((*b)->top), temp);
 	if (rrr == FALSE)
 		ft_printf("rrb\n");

@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:30 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/18 16:08:45 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/22 13:27:27 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,8 @@ t_node	*create_node(int content)
 		return (NULL);
 	node->content = content;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
-}
-
-t_node	*prev_last_node(t_node *top)
-{
-	while (top->next->next != NULL)
-		top = top->next;
-	return (top);
 }
 
 t_node	*last_node(t_node *top)
@@ -48,6 +42,7 @@ void	node_add_back(t_node **top, t_node *new)
 		*top = new;
 		return ;
 	}
+	new->prev = last_node(*top);
 	last_node(*top)->next = new;
 }
 
@@ -57,4 +52,18 @@ void	node_add_front(t_node **top, t_node *new)
 		return ;
 	new->next = *top;
 	*top = new;
+}
+
+void	*clear_stack(t_node **top, t_stack *A_or_B)
+{
+	t_node	*temp;
+
+	while (*top)
+	{
+		temp = (*top)->next;
+		free(*top);
+		*top = temp;
+	}
+	free(A_or_B);
+	return (NULL);
 }

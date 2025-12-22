@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/18 17:15:00 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/22 19:14:04 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	algo_caller(t_stack **a, t_stack **b, int strategy)
+static void	algo_caller(t_stack **a, t_stack **b, int strategy)
 {
 	float	disorder;
 
@@ -28,13 +28,12 @@ static int	algo_caller(t_stack **a, t_stack **b, int strategy)
 		else if (disorder >= 0.5)
 			strategy = COMPLEX;
 	}
-	if (strategy == SIMPLE && !(simple_min_max_extraction(a, b)))
-		return (0);
-	// if (strategy == MEDIUM && !())
-	// 	return (0);
-	// if (strategy == COMPLEX && !())
-	// 	return (0);
-	return (1);
+	if (strategy == SIMPLE)
+		return (simple_min_max_extraction(a, b));
+	// if (strategy == MEDIUM)
+	// 	return ();
+	// if (strategy == COMPLEX)
+	// 	return ();
 }
 
 static int	init(int argc, char *argv[], t_stack **a, t_stack **b)
@@ -61,8 +60,10 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	ft_printf("Strategy: %d\n", strategy);
-	printf("\nDisorder: %f\n", compute_disorder(a));
+	printf("Disorder: %f\n", compute_disorder(a));
 	ft_putstr_fd("OK\n\n", 1);
+	if (compute_disorder(a) == 0)
+		return (0);
 	algo_caller(&a, &b, strategy);
 	clear_stack(&a->top, a);
 	clear_stack(&b->top, b);

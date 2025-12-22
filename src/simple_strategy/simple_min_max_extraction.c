@@ -6,123 +6,112 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:48:49 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/18 19:02:30 by maroard          ###   ########.fr       */
+/*   Updated: 2025/12/22 19:32:45 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_extremum(t_stack *a, t_bool min, t_bool max)
+static void	sort_b(t_stack **B)
+{
+	if (!(*B)->top->next || top_is_extremum(*B, FALSE, TRUE))
+		return ;
+	if (top_is_extremum(*B, TRUE, FALSE))
+	{
+		rotate_b(B, FALSE);
+		return ;
+	}
+	
+}
+
+static int	find_extremum(t_stack *A, t_bool min, t_bool max)
 {
 	t_node	*current;
-	t_node	*check;
+	int		extremum;
+	int		position;
 	int		i;
 
-	current = a->top;
+	current = (A)->top;
+	extremum = current->content;
+	position = 0;
 	i = 0;
 	while (current)
 	{
-		check = a->top;
-		while (check)
+		if ((min == TRUE && current->content < extremum)
+			|| (max == TRUE && current->content > extremum))
 		{
-			if ((min && current->content > check->content)
-				|| (max && current->content < check->content))
-				break ;
-			if (!check->next && ((min && current->content <= check->content)
-				|| (max && current->content >= check->content)))
-				return (i);
-			check = check->next;
+			extremum = current->content;
+			position = i;
 		}
 		current = current->next;
 		i++;
 	}
-	return (0);
+	return (position);
 }
 
-static int	chose_min_or_max(t_stack **a)
+static int	chose_min_or_max(t_stack *A)
 {
-	int	min_position;
-	int	max_position;
+	int	pos_min;
+	int	pos_max;
+	int	cost_min;
+	int	cost_max;
 
-	min_position = find_extremum(*a, TRUE, FALSE);
-	max_position = find_extremum(*a, FALSE, TRUE);
-	ft_printf("min: %d\n", min_position);
-	ft_printf("max: %d\n", max_position);
-	if (((*a)->size / 2) - min_position >= ((*a)->size / 2) - max_position)
-		return (min_position);
-	return (max_position);
+	pos_min = find_extremum(A, TRUE, FALSE);
+	pos_max = find_extremum(A, FALSE, TRUE);
+	if (pos_min <= A->size - pos_min)
+		cost_min = pos_min;
+	else
+		cost_min = A->size - pos_min;
+	if (pos_max <= A->size - pos_max)
+		cost_max = pos_max;
+	else
+		cost_max = A->size - pos_max;
+	if (cost_min <= cost_max)
+		return (pos_min);
+	return (pos_max);
 }
 
-static void	extract_a_sort_b(t_stack **a, t_stack **b)
+static void	extract_a(t_stack **A, t_stack **B)
 {
 	int	i_to_extract;
+	int	cost;
 	int	i;
 
-	i_to_extract = chose_min_or_max(a);
-	ft_printf("i_to_extract: %d\n", i_to_extract);
-	if (i_to_extract <= (*a)->size / 2)
-		i = 1;
+	i_to_extract = chose_min_or_max(*A);
+	if (i_to_extract <= (*A)->size - i_to_extract)
+		cost = i_to_extract;
 	else
-		i = (*a)->size / 2;
-	while (i <= i_to_extract)
+		cost = (*A)->size - i_to_extract;
+	i = 0;
+	while (i < cost)
 	{
-		if (i_to_extract <= (*a)->size / 2)
-			rotate_a(a, FALSE);
+		if (i_to_extract <= (*A)->size - i_to_extract)
+			rotate_a(A, FALSE);
 		else
-			reverse_rotate_a(a, FALSE);
+			reverse_rotate_a(A, FALSE);
 		i++;
 	}
-	push_b(a, b);
-	// if ((*b)->top->content < (*b)->top->next->content)
-	// 	swap_b(b, FALSE);
+	push_b(A, B);
+	if ((*B)->top && (*B)->top->next)
+	{
+		if ((*B)->top->content < (*B)->top->next->content)
+			swap_b(B, FALSE);	
+	}
 }
 
-int	simple_min_max_extraction(t_stack **a, t_stack **b)
+void	simple_min_max_extraction(t_stack **A, t_stack **B)
 {
-	extract_a_sort_b(a, b);
-	print_stack((*a)->top, 'A');
-	ft_printf("\n");
-	print_stack((*b)->top, 'B');
-	ft_printf("\n");
-
-	extract_a_sort_b(a, b);
-	print_stack((*a)->top, 'A');
-	ft_printf("\n");
-	print_stack((*b)->top, 'B');
-	ft_printf("\n");
-
-	extract_a_sort_b(a, b);
-	print_stack((*a)->top, 'A');
-	ft_printf("\n");
-	print_stack((*b)->top, 'B');
-	ft_printf("\n");
-
-	extract_a_sort_b(a, b);
-	print_stack((*a)->top, 'A');
-	ft_printf("\n");
-	print_stack((*b)->top, 'B');
-	ft_printf("\n");
-
-	extract_a_sort_b(a, b);
-	print_stack((*a)->top, 'A');
-	ft_printf("\n");
-	print_stack((*b)->top, 'B');
-	ft_printf("\n");
-	// while (!stack_is_sorted(a))
-	// {
-	// 	while (!stack_is_sorted(b))
-	// 	{
-	// 		extract_a_sort_b(a, b);
-	// 		print_stack((*a)->top, 'A');
-	// 		ft_printf("\n");
-	// 		print_stack((*b)->top, 'B');
-	// 		ft_printf("\n");
-	// 	}
-	// 	push_a(a, b);
-	// 	print_stack((*a)->top, 'A');
-	// 	ft_printf("\n");
-	// 	print_stack((*b)->top, 'B');
-	// 	ft_printf("\n");
-	// }
-	return (1);
+	while ((*A)->top)
+	{
+		extract_a(A, B);
+		sort_b(B);
+		print_stack((*A)->top, 'A');
+		print_stack((*B)->top, 'B');
+	}
+	while ((*B)->top)
+	{
+		push_a(A, B);
+		print_stack((*A)->top, 'A');
+		print_stack((*B)->top, 'B');
+	}
 }
