@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:45:39 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/31 18:00:33 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 12:38:37 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	find_nb_bits_max_index(t_stack *A)
 {
-	int		index_max;
-	int		count;
+	int	index_max;
+	int	count;
 
 	index_max = A->size - 1;
 	count = 0;
@@ -29,15 +29,15 @@ static int	find_nb_bits_max_index(t_stack *A)
 
 void	radix_sort_adaptation_lsd(t_stack **A, t_stack **B)
 {
-	int		i;
-	int		k;
-	int		nb_elements;
-	int		nb_rounds;
+	int	i;
+	int	k;
+	int	nb_rounds;
+	int	nb_elements;
 
 	k = 0;
-	nb_elements = (*A)->size;
 	nb_rounds = find_nb_bits_max_index(*A);
-	indexation(A);
+	nb_elements = (*A)->size;
+	indexation(*A);
 	while (nb_rounds--)
 	{
 		i = 0;

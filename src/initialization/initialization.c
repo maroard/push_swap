@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/18 14:57:08 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 17:40:39 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static int	add_back(size_t i, char **arg, t_stack **a)
+static int	add_back(size_t i, char **arg, t_stack **A)
 {
 	if (!is_number(arg[i])
 		|| !(ft_atoll(arg[i]) >= INT_MIN && ft_atoll(arg[i]) <= INT_MAX))
 		return (0);
-	node_add_back(&((*a)->top), create_node(ft_atoi(arg[i])));
-	(*a)->size++;
+	node_add_back(&((*A)->top), create_node(ft_atoi(arg[i])));
+	(*A)->size++;
 	return (1);
 }
 

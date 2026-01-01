@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:30 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/26 11:35:37 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 16:07:39 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,31 @@ t_node	*last_node(t_node *top)
 
 void	node_add_back(t_node **top, t_node *new)
 {
+	t_node	*last;
+
 	if (!top || !new)
 		return ;
 	if (!*top)
 	{
+		new->prev = NULL;
+		new->next = NULL;
 		*top = new;
 		return ;
 	}
-	new->prev = last_node(*top);
-	last_node(*top)->next = new;
+	last = last_node(*top);
+	last->next = new;
+	new->prev = last;
+	new->next = NULL;
 }
 
 void	node_add_front(t_node **top, t_node *new)
 {
-	if (!new)
+	if (!top || !new)
 		return ;
+	new->prev = NULL;
 	new->next = *top;
+	if (*top)
+		(*top)->prev = new;
 	*top = new;
 }
 

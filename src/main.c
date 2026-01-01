@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/29 12:34:14 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 17:43:51 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	main(int argc, char *argv[])
 		ft_putstr_fd("Error\n", 0);
 		return (-1);
 	}
-	ft_printf("Strategy: %d\n", strategy);
-	printf("Disorder: %f\n", compute_disorder(a));
-	ft_putstr_fd("OK\n\n", 1);
+	// ft_printf("Strategy: %d\n", strategy);
+	// printf("Disorder: %f\n", compute_disorder(a));
+	// ft_putstr_fd("OK\n\n", 1);
 	if (compute_disorder(a) == 0)
 		return (0);
 	algo_caller(&a, &b, strategy);

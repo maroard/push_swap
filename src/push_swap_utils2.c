@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:07:01 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/31 17:37:28 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 15:31:07 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_stack(t_node *top, char A_or_B)
 	ft_printf("Stack %c:\n", A_or_B);
 	while (top)
 	{
-		ft_printf("[ %d ]\n", top->content);
+		ft_printf("[ %d ] (%d)\n", top->content, top->index);
 		top = top->next;
 	}
 }
@@ -61,21 +61,21 @@ int	is_extremum(t_node *to_check ,t_stack *A_or_B, t_bool min, t_bool max)
 	return (1);
 }
 
-void	indexation(t_stack **A_or_B)
+void	indexation(t_stack *A_or_B)
 {
 	t_node	*current;
 	t_node	*checker;
 
-	current = (*A_or_B)->top;
+	current = A_or_B->top;
 	while (current)
 	{
 		current->index = 0;
 		current = current->next;
 	}
-	current = (*A_or_B)->top;
+	current = A_or_B->top;
 	while (current)
 	{
-		checker = (*A_or_B)->top;
+		checker = A_or_B->top;
 		while (checker)
 		{
 			if (checker->content < current->content)
@@ -85,3 +85,4 @@ void	indexation(t_stack **A_or_B)
 		current = current->next;
 	}
 }
+ 

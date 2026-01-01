@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/31 17:36:17 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 12:35:39 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void    *clear_stack(t_node **top, t_stack *A_or_B);
 void	print_stack(t_node *top, char A_or_B);
 int		is_number(char *arg);
 int		is_extremum(t_node *to_check, t_stack *A_or_B, t_bool min, t_bool max);
-void	indexation(t_stack **A_or_B);
+void	indexation(t_stack *A_or_B);
 
 
 int		strategy_selector(int argc, char *argv[], t_strat *strategy);
@@ -62,12 +62,6 @@ t_stack	*create_stack_a(int argc, char *argv[]);
 int		occurence_checker(t_stack *A);
 float	compute_disorder(t_stack *A);
 
-
-void	simple_min_max_extraction(t_stack **a, t_stack **b);
-
-void	range_based_sorting(t_stack **A, t_stack **B);
-
-void	radix_sort_adaptation_lsd(t_stack **A, t_stack **B);
 
 void	push_a(t_stack **A, t_stack **B);
 void	push_b(t_stack **A, t_stack **B);
@@ -83,5 +77,10 @@ void	rotate_rotate(t_stack **A, t_stack **B);
 void	reverse_rotate_a(t_stack **A, t_bool rrr);
 void	reverse_rotate_b(t_stack **B, t_bool rrr);
 void	reverse_rotate_rotate(t_stack **A, t_stack **B);
+
+
+void	simple_min_max_extraction(t_stack **A, t_stack **B);
+void	range_based_sorting(t_stack **A, t_stack **B);
+void	radix_sort_adaptation_lsd(t_stack **A, t_stack **B);
 
 #endif

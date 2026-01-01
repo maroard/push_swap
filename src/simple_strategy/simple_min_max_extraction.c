@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:48:49 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/31 17:37:10 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/01 14:21:19 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	find_extremum(t_stack *A, t_bool min, t_bool max)
 	i = 0;
 	while (current)
 	{
-		if ((min == TRUE && current->content < extremum)
-			|| (max == TRUE && current->content > extremum))
+		if ((min && current->content < extremum)
+			|| (max && current->content > extremum))
 		{
 			extremum = current->content;
 			position = i;
