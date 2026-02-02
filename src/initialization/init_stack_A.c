@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 17:34:46 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/02 18:59:50 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	add_back(size_t i, char **arg, t_stack *A)
 		|| !(ft_atoll(arg[i]) >= INT_MIN && ft_atoll(arg[i]) <= INT_MAX))
 		return (0);
 	node_add_back(&A->top, create_node(ft_atoi(arg[i])));
-	A->size++;
+	++A->size;
 	return (1);
 }
 
@@ -46,6 +46,8 @@ static int	args_split(char *arg, t_stack *A)
 	if (!tab || !tab[0])
 		return (free_tab(tab));
 	i = 0;
+	++A->size;
+	A->top = NULL;
 	while (tab[i])
 	{
 		if (!add_back(i++, tab, A))
@@ -55,21 +57,23 @@ static int	args_split(char *arg, t_stack *A)
 	return (1);
 }
 
-int	create_stack_a(int argc, char *argv[], t_stack *A)
+int	create_stack(int argc, char *argv[], t_ctx **ctx)
 {
-	int		i;
+	int	i;
 
 	if (argc == 2 && ft_strchr(argv[1], ' '))
-		return (args_split(argv[1], A));
-	if (argc == 3 && ft_strchr(argv[2], ' '))
-		return (args_split(argv[2], A));
+		return (args_split(argv[1], &(*ctx)->a));
+	if (!(*ctx)->is_checker && argc == 3 && ft_strchr(argv[2], ' '))
+		return (args_split(argv[2], &(*ctx)->a));
 	i = 1;
-	if (!is_number(argv[i]))
+	if (!(*ctx)->is_checker && !is_number(argv[i]))
 		i = 2;
+	++(*ctx)->a.size;
+	(*ctx)->a.top = NULL;
 	while (i < (argc))
 	{
-		if (!add_back(i++, argv, A))
-			return (clear_stack(&A->top));
+		if (!add_back(i++, argv, &(*ctx)->a))
+			return (clear_stack(&(*ctx)->a.top));
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:45:39 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 17:29:35 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/26 13:06:03 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	find_nb_bits_max_index(t_stack A)
 	while (index_max != 0)
 	{
 		index_max = index_max >> 1;
-		count++;
+		++count;
 	}
 	return (count);
 }

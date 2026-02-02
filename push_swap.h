@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 18:38:58 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/02 18:08:03 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
-
-typedef enum bool
-{
-	FALSE,
-	TRUE
-}	t_bool;
 
 typedef enum strategies
 {
@@ -68,17 +62,13 @@ typedef struct s_bench
 
 typedef struct s_ctx
 {
+	t_bool	is_checker;
 	t_stack	a;
 	t_stack	b;
 	t_bench	bench;
 	t_strat	strategy;
 	double	disorder;
 }			t_ctx;
-
-
-int	ft_printf(const char *s, ...);
-int	ft_printf_fd(int fd, const char *s, ...);
-
 
 t_node	*create_node(int content);
 t_node	*last_node(t_node *top);
@@ -90,35 +80,28 @@ int		is_number(char *arg);
 int		is_extremum(t_node *to_check, t_stack A_or_B, t_bool min, t_bool max);
 void	indexation(t_stack A_or_B);
 
-
-int		strategy_selector(int argc, char *argv[], t_ctx *ctx);
-int		create_stack_a(int argc, char *argv[], t_stack *A);
+int		strategy_selector(int argc, char *argv[], t_ctx **ctx);
+int		create_stack(int argc, char *argv[], t_ctx **ctx);
 int		occurence_checker(t_stack A);
 double	compute_disorder(t_stack A);
 
-
 void	push_a(t_ctx *ctx);
 void	push_b(t_ctx *ctx);
-
 void	swap_a(t_ctx *ctx, t_bool ss);
 void	swap_b(t_ctx *ctx, t_bool ss);
 void	swap_swap(t_ctx *ctx);
-
 void	rotate_a(t_ctx *ctx, t_bool rr);
 void	rotate_b(t_ctx *ctx, t_bool rr);
 void	rotate_rotate(t_ctx *ctx);
-
 void	reverse_rotate_a(t_ctx *ctx, t_bool rrr);
 void	reverse_rotate_b(t_ctx *ctx, t_bool rrr);
 void	reverse_rotate_rotate(t_ctx *ctx);
-
 
 void	simple_min_max_extraction(t_ctx *ctx);
 void	range_based_sorting(t_ctx *ctx);
 void	radix_sort_adaptation_lsd(t_ctx *ctx);
 
-
 void	logs_manager(t_ctx *ctx, t_op operation);
-void	print_benchmark(t_ctx *ctx);
+void	print_benchmark(t_ctx ctx);
 
 #endif

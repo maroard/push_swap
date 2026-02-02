@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 11:31:02 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 17:28:22 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/26 12:24:53 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static t_bool	should_rotate(t_stack A_or_B, int range_size, t_bool extraction, t
 		|| (injection && current->index != A_or_B.size - 1)))
 	{
 		current = current->next;
-		i++;
+		++i;
 	}
 	current = last_node(A_or_B.top);
 	while (current && ((extraction && !(current->index < range_size))
 		|| (injection && current->index != A_or_B.size - 1)))
 	{
 		current = current->prev;
-		j++;
+		++j;
 	}
 	if (i <= j)
 		return (TRUE);
@@ -55,7 +55,7 @@ static void	injection(t_ctx *ctx)
 			rotate_b(ctx, FALSE);
 		else
 			reverse_rotate_b(ctx, FALSE);
-		i++;
+		++i;
 	}
 	push_a(ctx);
 	while (ctx->b.size > 2 && i--)

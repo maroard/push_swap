@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:48:49 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 17:24:00 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/26 13:11:58 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	sort_b(t_ctx *ctx)
 	while (current && ctx->a.top->content < current->content)
 	{
 		current = current->next;
-		i++;
+		++i;
 	}
 	j = i;
 	while (i--)
@@ -57,7 +57,7 @@ static int	find_extremum(t_stack A, t_bool min, t_bool max)
 			position = i;
 		}
 		current = current->next;
-		i++;
+		++i;
 	}
 	return (position);
 }

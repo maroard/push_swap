@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 21:09:24 by maroard           #+#    #+#             */
-/*   Updated: 2025/12/01 12:34:45 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/02 18:52:31 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,27 @@
 
 # include <stddef.h>
 
+typedef enum s_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
+int			ft_printf(const char *s, ...);
+int			ft_printf_fd(int fd, const char *s, ...);
+
+char		*get_next_line(int fd);
+
 int			ft_atoi(const char *str);
 long		ft_atol(const char *str);
 long long	ft_atoll(const char *str);
+
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 
@@ -57,8 +69,10 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putstr(char *str);
+
 char		**ft_split(char const *s, char c);
 char		*ft_strchr(const char *s, int c);
+int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strdup(const char *s);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 char		*ft_strjoin(char const *s1, char const *s2);

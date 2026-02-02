@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:00:10 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 16:24:27 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/26 12:24:29 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ double	compute_disorder(t_stack A)
 		checker = current->next;
 		while (checker)
 		{
-			total_pairs++;
+			++total_pairs;
 			if (current->content > checker->content)
-				mistakes++;
+				++mistakes;
 			checker = checker->next;
 		}
 		current = current->next;

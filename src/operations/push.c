@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 16:01:21 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 18:39:45 by maroard          ###   ########.fr       */
+/*   Updated: 2026/01/26 12:25:22 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	push_a(t_ctx *ctx)
 	temp->next = NULL;
 	temp->prev = NULL;
 	node_add_front(&ctx->a.top, temp);
-	ctx->a.size++;
-	ctx->b.size--;
+	++ctx->a.size;
+	--ctx->b.size;
 	logs_manager(ctx, PA);
 }
 
@@ -43,7 +43,7 @@ void	push_b(t_ctx *ctx)
 	temp->next = NULL;
 	temp->prev = NULL;
 	node_add_front(&ctx->b.top, temp);
-	ctx->b.size++;
-	ctx->a.size--;
+	++ctx->b.size;
+	--ctx->a.size;
 	logs_manager(ctx, PB);
 }
