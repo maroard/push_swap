@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/02 18:06:52 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/03 11:40:58 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char *argv[])
 	if (!ctx || !initialization(argc, argv, &ctx))
 	{
 		ft_putstr_fd("Error\n", 0);
+		free(ctx);
 		return (-1);
 	}
 	ft_putstr_fd("OK\n\n", 1);

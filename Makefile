@@ -6,7 +6,7 @@
 #    By: maroard <maroard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 11:16:55 by maroard           #+#    #+#              #
-#    Updated: 2026/02/02 17:41:48 by maroard          ###   ########.fr        #
+#    Updated: 2026/02/03 11:34:15 by maroard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,11 @@ OBJ_DIR		= obj
 ALL_SRC		= $(shell find $(SRC_DIR) -type f -name "*.c")
 
 MAIN		= $(SRC_DIR)/push_swap.c
-BONUS_MAIN	= $(SRC_DIR)/bonus/push_swap_bonus.c
+MAIN_BONUS	= $(SRC_DIR)/push_swap_bonus.c
 
-SRC_COMMON	= $(filter-out $(MAIN) $(BONUS_MAIN), $(ALL_SRC))
-
-SRC			= $(SRC_COMMON) $(MAIN)
-SRC_BONUS	= $(SRC_COMMON) $(BONUS_MAIN)
+SRC_ALL		= $(filter-out $(MAIN) $(MAIN_BONUS), $(ALL_SRC))
+SRC			= $(SRC_ALL) $(MAIN)
+SRC_BONUS	= $(SRC_ALL) $(MAIN_BONUS)
 
 OBJ			= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 OBJ_BONUS	= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_BONUS))
