@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/02 18:08:03 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/16 17:17:38 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		is_extremum(t_node *to_check, t_stack A_or_B, t_bool min, t_bool max);
 void	indexation(t_stack A_or_B);
 
 int		strategy_selector(int argc, char *argv[], t_ctx **ctx);
-int		create_stack(int argc, char *argv[], t_ctx **ctx);
+int		create_stack_a(int argc, char *argv[], t_ctx **ctx);
 int		occurence_checker(t_stack A);
 double	compute_disorder(t_stack A);
 

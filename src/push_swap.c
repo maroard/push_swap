@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/03 11:40:58 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/16 17:17:30 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	initialization(int argc, char *argv[], t_ctx **ctx)
 {	
 	if (!strategy_selector(argc, argv, ctx))
 		return (0);
-	if (!create_stack(argc, argv, ctx))
+	if (!create_stack_a(argc, argv, ctx))
 		return (0);
 	if (!occurence_checker((*ctx)->a))
 		return (0);
@@ -59,8 +59,6 @@ int	main(int argc, char *argv[])
 	if (!ctx->disorder)
 		return (0);
 	algo_caller(&ctx);
-	// print_stack(ctx->a.top, 'A');
-	// print_stack(ctx->b.top, 'B');
 	clear_stack(&ctx->a.top);
 	clear_stack(&ctx->b.top);
 	if (ctx->bench.is_active)

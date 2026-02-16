@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/02 18:59:50 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/16 17:17:23 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	args_split(char *arg, t_stack *A)
 	return (1);
 }
 
-int	create_stack(int argc, char *argv[], t_ctx **ctx)
+int	create_stack_a(int argc, char *argv[], t_ctx **ctx)
 {
 	int	i;
 
