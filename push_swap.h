@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 17:16:38 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 18:24:16 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_ctx
 	t_stack	b;
 	t_bench	bench;
 	t_strat	strategy;
+	int		nb_flags;
 	double	disorder;
 }			t_ctx;
 

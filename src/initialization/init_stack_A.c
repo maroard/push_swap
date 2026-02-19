@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 15:20:15 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 18:35:59 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	create_stack_a(int argc, char *argv[], t_ctx *ctx)
 {
 	int	i;
 
-	if (argc == 2 && ft_strchr(argv[1], ' '))
+	if (ctx->nb_flags == 0 && ft_strchr(argv[1], ' '))
 		return (args_split(argv[1], &ctx->a));
-	if (!ctx->is_checker && argc == 3 && ft_strchr(argv[2], ' '))
+	if (!ctx->is_checker && ctx->nb_flags == 1 && ft_strchr(argv[2], ' '))
 		return (args_split(argv[2], &ctx->a));
+	if (!ctx->is_checker && ctx->nb_flags == 2 && ft_strchr(argv[3], ' '))
+		return (args_split(argv[3], &ctx->a));
 	i = 1;
 	if (!ctx->is_checker && !is_number(argv[i]))
 		i = 2;

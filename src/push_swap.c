@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 17:16:34 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 18:35:19 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static void	algo_caller(t_ctx *ctx)
 	if (ctx->a.size == 5)
 		return (ctx->bench.complexity = 0, sort_5_elements(ctx));
 	if (ctx->strategy == SIMPLE
-		|| (ctx->strategy = ADAPTIVE && ctx->disorder < 0.2))
-		return (ft_printf("test\n"), ctx->bench.complexity = 1, simple_min_max_extraction(ctx));
+		|| (ctx->strategy == ADAPTIVE && ctx->disorder < 0.2))
+		return (ctx->bench.complexity = 1, simple_min_max_extraction(ctx));
 	if (ctx->strategy == MEDIUM
-		|| (ctx->strategy = ADAPTIVE && ctx->disorder >= 0.2 && (ctx)->disorder < 0.5))
-		return (ft_printf("test\n"), ctx->bench.complexity = 2, range_based_sorting(ctx));
+		|| (ctx->strategy == ADAPTIVE && ctx->disorder >= 0.2 && (ctx)->disorder < 0.5))
+		return (ctx->bench.complexity = 2, range_based_sorting(ctx));
 	if (ctx->strategy == COMPLEX 
 		|| (ctx->strategy == ADAPTIVE && ctx->disorder >= 0.5))
-		return (ft_printf("test\n"), ctx->bench.complexity = 3, radix_sort_adaptation_lsd(ctx));
+		return (ctx->bench.complexity = 3, radix_sort_adaptation_lsd(ctx));
 }
 
 static int	initialization(int argc, char *argv[], t_ctx *ctx)
