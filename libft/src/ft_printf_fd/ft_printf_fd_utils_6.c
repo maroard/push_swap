@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 11:57:47 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/01 18:36:14 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/17 22:11:22 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	print_double(double n, int fd)
 	int	decimal;
 	int	len;
 
+	ft_putstr("caca");
 	len = 0;
 	if (n < 0)
 	{

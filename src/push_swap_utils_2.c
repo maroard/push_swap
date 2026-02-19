@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:07:01 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 17:33:36 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/17 16:00:52 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,43 @@ void	print_stack(t_node *top, char A_or_B)
 	}
 }
 
-int	is_number(char *arg)
+t_bool	is_number(char *arg)
 {
 	size_t	i;
 
 	i = 0;
 	while ((arg[i] >= 9 && arg[i] <= 13) || arg[i] == ' ')
-		i++;
+		++i;
 	if (!arg[i])
-		return (0);
+		return (FALSE);
 	if (arg[i] == '-' || arg[i] == '+')
-		i++;
+		++i;
 	if (!arg[i])
-		return (0);
+		return (FALSE);
 	while (arg[i])
 	{
 		if (ft_isdigit(arg[i]) == 0)
-			return (0);
-		i++;
+			return (FALSE);
+		++i;
 	}
-	return (1);
+	return (TRUE);
 }
 
-int	is_extremum(t_node *to_check ,t_stack A_or_B, t_bool min, t_bool max)
+t_bool	is_extremum(t_node *to_check ,t_stack A_or_B, t_bool min, t_bool max)
 {
 	t_node	*checker;
 
 	if (!A_or_B.top)
-		return (1);
+		return (TRUE);
 	checker = A_or_B.top;
 	while (checker)
 	{
 		if ((min == TRUE && to_check->content > checker->content)
 			|| (max == TRUE && to_check->content < checker->content))
-			return (0);
+			return (FALSE);
 		checker = checker->next;
 	}
-	return (1);
+	return (TRUE);
 }
 
 void	indexation(t_stack A_or_B)

@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/16 17:17:38 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 17:16:38 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_bench
 	t_bool	is_active;
 	int		ops[OP_COUNT];
 	int		total_ops;
+	int		complexity;
 }			t_bench;
 
 typedef struct s_ctx
@@ -76,12 +77,12 @@ void	node_add_back(t_node **top, t_node *new);
 void	node_add_front(t_node **top, t_node *new);
 int		clear_stack(t_node **top);
 void	print_stack(t_node *top, char A_or_B);
-int		is_number(char *arg);
-int		is_extremum(t_node *to_check, t_stack A_or_B, t_bool min, t_bool max);
+t_bool	is_number(char *arg);
+t_bool	is_extremum(t_node *to_check, t_stack A_or_B, t_bool min, t_bool max);
 void	indexation(t_stack A_or_B);
 
-int		strategy_selector(int argc, char *argv[], t_ctx **ctx);
-int		create_stack_a(int argc, char *argv[], t_ctx **ctx);
+int		flags_parser(int argc, char *argv[], t_ctx *ctx);
+int		create_stack_a(int argc, char *argv[], t_ctx *ctx);
 int		occurence_checker(t_stack A);
 double	compute_disorder(t_stack A);
 
@@ -100,6 +101,9 @@ void	reverse_rotate_rotate(t_ctx *ctx);
 void	simple_min_max_extraction(t_ctx *ctx);
 void	range_based_sorting(t_ctx *ctx);
 void	radix_sort_adaptation_lsd(t_ctx *ctx);
+
+void    sort_3_elements(t_ctx *ctx);
+void    sort_5_elements(t_ctx *ctx);
 
 void	logs_manager(t_ctx *ctx, t_op operation);
 void	print_benchmark(t_ctx ctx);

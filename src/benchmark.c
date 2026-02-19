@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 12:49:36 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/02 16:12:11 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 15:28:13 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,16 @@ void	print_benchmark(t_ctx ctx)
 		"Complex",
 		"Adaptive"
 	};
-	ft_printf_fd(2, "[BENCHMARK] Disorder: %f%%\n", ctx.disorder * 100);
-	ft_printf_fd(2, "[BENCHMARK] Strategy: %s\n", strat_names[ctx.strategy]);
+	char	*complexity[4] = {
+		"Special case",
+		"O(n2)",
+		"O(n√n)",
+		"O(n log n)"
+	};
+
+	ft_printf_fd(2, "[BENCHMARK] Disorder: %f%%\n", ctx.disorder);
+	ft_printf_fd(2, "[BENCHMARK] Strategy: %s / %s\n", strat_names[ctx.strategy],
+		complexity[ctx.bench.complexity]);
 	ft_printf_fd(2, "[BENCHMARK] Total operations: %d\n", ctx.bench.total_ops);
 	ft_printf_fd(2, "[BENCHMARK] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
 		ctx.bench.ops[0], ctx.bench.ops[1], ctx.bench.ops[2],

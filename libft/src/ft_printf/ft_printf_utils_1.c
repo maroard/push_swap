@@ -6,13 +6,12 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:55:41 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/01 19:28:50 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 15:04:41 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
-#include <stdarg.h>
 
 static void	update_widths(t_flags *fmt, t_bool precision_started, char digit)
 {

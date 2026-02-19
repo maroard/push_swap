@@ -6,12 +6,11 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 11:35:42 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/01 19:32:40 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 15:05:04 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_fd.h"
-#include <stdarg.h>
 
 static int	dispatcher(const char type, t_ctx ctx)
 {
@@ -58,7 +57,7 @@ static int	print_formatted(t_ctx ctx, const char type)
 		total_len += print_padding(ctx.len.padding, '0', ctx.fd);
 	else if (ctx.format.dot && ctx.len.precision_zeros != 0)
 		total_len += print_precision(ctx.len.precision_zeros, ctx.fd);
-	if (ctx.len.digits > 0)
+	if (ctx.len.digits > 0 || type == 'f')
 		total_len += dispatcher(type, ctx);
 	if (ctx.format.minus)
 		total_len += print_padding(ctx.len.padding, ' ', ctx.fd);

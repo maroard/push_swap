@@ -6,13 +6,12 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:55:41 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/01 19:32:26 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/19 15:05:00 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_fd.h"
 #include <limits.h>
-#include <stdarg.h>
 
 static void	update_widths(t_flags *fmt, t_bool precision_started, char digit)
 {
@@ -82,8 +81,7 @@ static void	digits_len(t_flags fmt, t_arg arg, const char type, t_len *len)
 	if (type == 'c' || type == '%')
 		len->digits = 1;
 	else if (type == 's')
-		len->digits = string_len_with_precision(fmt.dot, fmt.precision,
-				arg.s);
+		len->digits = string_len_with_precision(fmt.dot, fmt.precision, arg.s);
 	else if (type == 'p')
 		len->digits = ptr_len(arg.p);
 	else if (type == 'd' || type == 'i')

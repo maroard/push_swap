@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:45:39 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/26 13:06:03 by maroard          ###   ########.fr       */
+/*   Updated: 2026/02/17 15:52:49 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	radix_sort_adaptation_lsd(t_ctx *ctx)
 		}
 		while (ctx->b.top)
 			push_a(ctx);
-		k++;
+		++k;
 	}
 }
