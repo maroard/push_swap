@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 18:35:19 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/02 17:02:20 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 static void	algo_caller(t_ctx *ctx)
 {
 	if (ctx->a.size == 3)
-		return (ctx->bench.complexity = 0, sort_3_elements(ctx));
+		return (ctx->bench.complexity = 0, ctx->strategy = ADAPTIVE, sort_3_elements(ctx));
 	if (ctx->a.size == 5)
-		return (ctx->bench.complexity = 0, sort_5_elements(ctx));
+		return (ctx->bench.complexity = 0, ctx->strategy = ADAPTIVE, sort_5_elements(ctx));
 	if (ctx->strategy == SIMPLE
 		|| (ctx->strategy == ADAPTIVE && ctx->disorder < 0.2))
 		return (ctx->bench.complexity = 1, simple_min_max_extraction(ctx));
@@ -57,7 +57,6 @@ int	main(int argc, char *argv[])
 	if (!ctx->disorder)
 		return (0);
 	algo_caller(ctx);
-	ft_printf("strategy: %d\n", ctx->strategy);
 	print_stack(ctx->a.top, 'A');
 	clear_stack(&ctx->a.top);
 	clear_stack(&ctx->b.top);

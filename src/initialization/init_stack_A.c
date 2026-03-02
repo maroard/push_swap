@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 18:35:59 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/02 16:59:20 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static int	add_back(size_t i, char **args, t_stack *A)
+static int	add_back(int i, char **args, t_stack *A)
 {
 	if (!is_number(args[i])
 		|| !(ft_atoll(args[i]) >= INT_MIN && ft_atoll(args[i]) <= INT_MAX))
@@ -62,13 +62,9 @@ int	create_stack_a(int argc, char *argv[], t_ctx *ctx)
 
 	if (ctx->nb_flags == 0 && ft_strchr(argv[1], ' '))
 		return (args_split(argv[1], &ctx->a));
-	if (!ctx->is_checker && ctx->nb_flags == 1 && ft_strchr(argv[2], ' '))
-		return (args_split(argv[2], &ctx->a));
-	if (!ctx->is_checker && ctx->nb_flags == 2 && ft_strchr(argv[3], ' '))
-		return (args_split(argv[3], &ctx->a));
-	i = 1;
-	if (!ctx->is_checker && !is_number(argv[i]))
-		i = 2;
+	if (!ctx->is_checker && ft_strchr(argv[ctx->nb_flags + 1], ' '))
+		return (args_split(argv[ctx->nb_flags + 1], &ctx->a));
+	i = ctx->nb_flags + 1;
 	ctx->a.top = NULL;
 	while (i < (argc))
 	{
