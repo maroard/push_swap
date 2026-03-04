@@ -6,22 +6,22 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 18:47:45 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/02 18:52:16 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:24:53 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while (1)
-    {
-        if (s1[i] != s2[i] || (!s1[i] && !s2[i]))
-            break ;
-        ++i;
-    }
-    return (s1[i] - s2[i]);
+	i = 0;
+	while (1)
+	{
+		if (s1[i] != s2[i] || (!s1[i] && !s2[i]))
+			break ;
+		++i;
+	}
+	return (s1[i] - s2[i]);
 }

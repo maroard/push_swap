@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/04 13:56:04 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:26:13 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ typedef enum operations
 
 typedef struct s_node
 {
-    int				content;
+	int				content;
 	int				index;
-    struct s_node	*next;
+	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
 
 typedef struct s_stack
 {
-    t_node	*top;
-    int		size;
+	t_node	*top;
+	int		size;
 }			t_stack;
 
 typedef struct s_bench
@@ -111,8 +111,8 @@ void	simple_min_extraction(t_ctx *ctx);
 void	chunk_based_sorting(t_ctx *ctx);
 void	radix_sort_adaptation_lsd(t_ctx *ctx);
 
-void    sort_3_elements(t_ctx *ctx);
-void    sort_5_elements(t_ctx *ctx);
+void	sort_3_elements(t_ctx *ctx);
+void	sort_5_elements(t_ctx *ctx);
 
 void	logs_manager(t_ctx *ctx, t_op operation);
 void	print_benchmark(t_ctx ctx);
