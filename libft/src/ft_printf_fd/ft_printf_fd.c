@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 11:35:42 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 15:05:04 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/04 16:36:00 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	ft_printf_fd(int fd, const char *s, ...)
 	va_start(arg_p, s);
 	i = 0;
 	s_len = 0;
+	ctx.fd = fd;
 	while (s[i])
 	{
 		if (s[i] == '%')
