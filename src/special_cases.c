@@ -6,13 +6,13 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 15:40:03 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/18 15:43:24 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/02 19:21:15 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sort_3_elements(t_ctx *ctx)
+void	sort_3_elements(t_ctx *ctx)
 {
 	if (is_extremum(ctx->a.top, ctx->a, FALSE, TRUE))
 	{
@@ -52,7 +52,7 @@ static t_bool	should_rotate(t_stack A)
 	return (TRUE);
 }
 
-void    sort_5_elements(t_ctx *ctx)
+void	sort_5_elements(t_ctx *ctx)
 {
 	indexation(ctx->a);
 	while (ctx->a.size > 3)

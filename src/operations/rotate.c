@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 16:42:39 by maroard           #+#    #+#             */
-/*   Updated: 2026/01/02 18:41:02 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/02 19:11:24 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	rotate_a(t_ctx *ctx, t_bool rr)
 {
 	t_node	*temp;
 
-	
 	if (!ctx->a.top || !ctx->a.top->next)
 		return ;
 	temp = ctx->a.top;

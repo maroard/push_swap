@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/02 17:02:20 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/04 12:19:18 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,33 @@
 
 static void	algo_caller(t_ctx *ctx)
 {
-	if (ctx->a.size == 3)
-		return (ctx->bench.complexity = 0, ctx->strategy = ADAPTIVE, sort_3_elements(ctx));
-	if (ctx->a.size == 5)
-		return (ctx->bench.complexity = 0, ctx->strategy = ADAPTIVE, sort_5_elements(ctx));
+	if (ctx->a.size == 3 && ctx->strategy == ADAPTIVE)
+		return (ctx->bench.complexity = 0,
+			ctx->strategy = ADAPTIVE,
+			sort_3_elements(ctx));
+	if (ctx->a.size == 5 && ctx->strategy == ADAPTIVE)
+		return (ctx->bench.complexity = 0,
+			ctx->strategy = ADAPTIVE,
+			sort_5_elements(ctx));
 	if (ctx->strategy == SIMPLE
-		|| (ctx->strategy == ADAPTIVE && ctx->disorder < 0.2))
-		return (ctx->bench.complexity = 1, simple_min_max_extraction(ctx));
+		|| (ctx->strategy == ADAPTIVE
+			&& ctx->disorder < 0.2))
+		return (ctx->bench.complexity = 1,
+			simple_min_extraction(ctx));
 	if (ctx->strategy == MEDIUM
-		|| (ctx->strategy == ADAPTIVE && ctx->disorder >= 0.2 && (ctx)->disorder < 0.5))
-		return (ctx->bench.complexity = 2, range_based_sorting(ctx));
-	if (ctx->strategy == COMPLEX 
-		|| (ctx->strategy == ADAPTIVE && ctx->disorder >= 0.5))
-		return (ctx->bench.complexity = 3, radix_sort_adaptation_lsd(ctx));
+		|| (ctx->strategy == ADAPTIVE
+			&& ctx->disorder >= 0.2 && (ctx)->disorder < 0.5))
+		return (ctx->bench.complexity = 2,
+			chunk_based_sorting(ctx));
+	if (ctx->strategy == COMPLEX
+		|| (ctx->strategy == ADAPTIVE
+			&& ctx->disorder >= 0.5))
+		return (ctx->bench.complexity = 3,
+			radix_sort_adaptation_lsd(ctx));
 }
 
 static int	initialization(int argc, char *argv[], t_ctx *ctx)
-{	
+{
 	if (!flags_parser(argc, argv, ctx))
 		return (0);
 	if (!create_stack_a(argc, argv, ctx))
@@ -48,16 +58,10 @@ int	main(int argc, char *argv[])
 
 	ctx = malloc(sizeof(t_ctx));
 	if (!ctx || !initialization(argc, argv, ctx))
-	{
-		ft_putstr_fd("Error\n", 0);
-		free(ctx);
-		return (-1);
-	}
-	ft_putstr_fd("OK\n\n", 1);
+		return (ft_putstr_fd("Error\n", 0), free(ctx), -1);
 	if (!ctx->disorder)
 		return (0);
 	algo_caller(ctx);
-	print_stack(ctx->a.top, 'A');
 	clear_stack(&ctx->a.top);
 	clear_stack(&ctx->b.top);
 	if (ctx->bench.is_active)

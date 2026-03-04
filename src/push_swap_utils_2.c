@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:07:01 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/17 16:00:52 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/02 19:05:56 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_bool	is_number(char *arg)
 	return (TRUE);
 }
 
-t_bool	is_extremum(t_node *to_check ,t_stack A_or_B, t_bool min, t_bool max)
+t_bool	is_extremum(t_node *to_check, t_stack A_or_B, t_bool min, t_bool max)
 {
 	t_node	*checker;
 
@@ -85,4 +85,3 @@ void	indexation(t_stack A_or_B)
 		current = current->next;
 	}
 }
- 

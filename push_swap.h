@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:35 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 18:24:16 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:56:04 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ typedef struct s_ctx
 	double	disorder;
 }			t_ctx;
 
+typedef struct s_chunk
+{
+	int	size;
+	int	high;
+	int	low;
+	int	elements_extracted;
+}		t_chunk;
+
 t_node	*create_node(int content);
 t_node	*last_node(t_node *top);
 void	node_add_back(t_node **top, t_node *new);
@@ -99,8 +107,8 @@ void	reverse_rotate_a(t_ctx *ctx, t_bool rrr);
 void	reverse_rotate_b(t_ctx *ctx, t_bool rrr);
 void	reverse_rotate_rotate(t_ctx *ctx);
 
-void	simple_min_max_extraction(t_ctx *ctx);
-void	range_based_sorting(t_ctx *ctx);
+void	simple_min_extraction(t_ctx *ctx);
+void	chunk_based_sorting(t_ctx *ctx);
 void	radix_sort_adaptation_lsd(t_ctx *ctx);
 
 void    sort_3_elements(t_ctx *ctx);
