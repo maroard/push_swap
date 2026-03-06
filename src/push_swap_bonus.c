@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 14:31:04 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/18 15:56:31 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 20:09:48 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,15 @@ static int	initialization(int argc, char *argv[], t_ctx *ctx)
 
 int	main(int argc, char *argv[])
 {
-	t_ctx	*ctx;
+	t_ctx	ctx;
 
-	ctx = malloc(sizeof(t_ctx));
-	ctx->is_checker = TRUE;
-	if (!ctx || !initialization(argc, argv, ctx) || !reader(ctx))
-	{
-		ft_putstr_fd("Error\n", 2);
-		free(ctx);
-		return (-1);
-	}
-	if (compute_disorder(ctx->a) > 0 || ctx->b.size > 0)
-	{
-		ft_putstr("KO\n");
-		free(ctx);
-		return (0);
-	}
+	ft_memset(&ctx, 0, sizeof(ctx));
+	ctx.is_checker = TRUE;
+	if (!initialization(argc, argv, &ctx) || !reader(&ctx))
+		return (ft_putstr_fd("Error\n", 2), -1);
+	if (compute_disorder(ctx.a) > 0 || ctx.b.size > 0)
+		return (ft_putstr("KO\n"), 0);
 	ft_putstr("OK\n");
-	clear_stack(&ctx->a.top);
-	free(ctx);
+	clear_stack(&ctx.a.top);
 	return (0);
 }
