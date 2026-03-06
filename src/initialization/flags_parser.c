@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:17:50 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/06 13:05:04 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:13:17 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int	flags_parser(int argc, char *argv[], t_ctx *ctx)
 	int	i;
 
 	i = 1;
-	ctx->nb_flags = 0;
 	ctx->strategy = ADAPTIVE;
-	ctx->bench.is_active = FALSE;
-	if (argc == 1 || (argc == 2 && !is_number(argv[1])))
+	if (!is_number(argv[argc - 1]) && !ft_strchr(argv[argc - 1], ' '))
 		return (0);
-	while (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
+	while (argv[i][0] == '-' && argv[i][1] == '-')
 	{
 		if (!ft_strcmp("--simple", argv[i]))
 			ctx->strategy = SIMPLE;

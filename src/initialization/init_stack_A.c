@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:51:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/02 16:59:20 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 15:15:40 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static int	args_split(char *arg, t_stack *A)
 	if (!tab || !tab[0])
 		return (free_tab(tab));
 	i = 0;
-	A->top = NULL;
 	while (tab[i])
 	{
 		if (!add_back(i++, tab, A))
@@ -65,8 +64,7 @@ int	create_stack_a(int argc, char *argv[], t_ctx *ctx)
 	if (!ctx->is_checker && ft_strchr(argv[ctx->nb_flags + 1], ' '))
 		return (args_split(argv[ctx->nb_flags + 1], &ctx->a));
 	i = ctx->nb_flags + 1;
-	ctx->a.top = NULL;
-	while (i < (argc))
+	while (i < argc)
 	{
 		if (!add_back(i++, argv, &ctx->a))
 			return (clear_stack(&ctx->a.top));
