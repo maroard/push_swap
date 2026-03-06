@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 11:36:09 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/06 12:42:57 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 16:04:06 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ int		unsigned_int_len(unsigned int n);
 int		hex_len(unsigned long n);
 int		ptr_len(void *ptr);
 
-int		print_padding(int padding_len, const char padding_char, int fd);
-int		print_sign(const char sign, int fd);
-int		print_prefix(const char type, int fd);
-int		print_precision(int precision_zeros, int fd);
+int		print_padding_fd(int padding_len, const char padding_char, int fd);
+int		print_sign_fd(const char sign, int fd);
+int		print_prefix_fd(const char type, int fd);
+int		print_precision_fd(int precision_zeros, int fd);
 
-int		print_str(char *str, int fd);
-int		print_str_n(char *str, int n, int fd);
-int		print_int(int n, int fd);
-int		print_unsigned_int(unsigned int n, int fd);
-int		print_hex(unsigned long n, t_bool uppercase, int fd);
-int		print_ptr(void *ptr, int fd);
-int		print_double(double n, int fd);
+int		print_str_fd(char *str, int fd);
+int		print_str_n_fd(char *str, int n, int fd);
+int		print_int_fd(int n, int fd);
+int		print_unsigned_int_fd(unsigned int n, int fd);
+int		print_hex_fd(unsigned long n, t_bool uppercase, int fd);
+int		print_ptr_fd(void *ptr, int fd);
+int		print_double_fd(double n, int fd);
 
 int		ft_printf_fd(int fd, const char *s, ...);
 

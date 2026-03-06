@@ -6,13 +6,13 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 21:37:03 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/18 14:36:06 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 16:03:52 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_fd.h"
 
-int	print_padding(int padding_len, const char padding_char, int fd)
+int	print_padding_fd(int padding_len, const char padding_char, int fd)
 {
 	int	len;
 
@@ -25,13 +25,13 @@ int	print_padding(int padding_len, const char padding_char, int fd)
 	return (len);
 }
 
-int	print_sign(const char sign, int fd)
+int	print_sign_fd(const char sign, int fd)
 {
 	ft_putchar_fd(sign, fd);
 	return (1);
 }
 
-int	print_prefix(const char type, int fd)
+int	print_prefix_fd(const char type, int fd)
 {
 	if (type == 'X')
 		ft_putstr_fd("0X", fd);
@@ -40,7 +40,7 @@ int	print_prefix(const char type, int fd)
 	return (2);
 }
 
-int	print_precision(int precision_zeros, int fd)
+int	print_precision_fd(int precision_zeros, int fd)
 {
 	int	len;
 
