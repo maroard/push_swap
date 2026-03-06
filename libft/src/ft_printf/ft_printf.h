@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 11:36:09 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/19 15:04:34 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 12:46:10 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_ctx
 	t_len	len;
 }			t_ctx;
 
-void	init_flags(t_flags *fmt);
 t_bool	is_flag(const char c);
 void	update_flags(t_flags *fmt, const char type);
 char	parse_format(t_flags *fmt, const char *s);

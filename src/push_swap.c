@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/04 16:59:52 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 13:08:14 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,17 @@ static int	initialization(int argc, char *argv[], t_ctx *ctx)
 
 int	main(int argc, char *argv[])
 {
-	t_ctx	*ctx;
+	t_ctx	ctx;
 
-	ctx = malloc(sizeof(t_ctx));
-	if (!ctx || !initialization(argc, argv, ctx))
-		return (ft_putstr_fd("Error\n", 0), free(ctx), -1);
-	if (!ctx->disorder)
+	ft_memset(&ctx, 0, sizeof(ctx));
+	if (!initialization(argc, argv, &ctx))
+		return (ft_putstr_fd("Error\n", 2), -1);
+	if (!ctx.disorder)
 		return (0);
-	algo_caller(ctx);
-	clear_stack(&ctx->a.top);
-	clear_stack(&ctx->b.top);
-	if (ctx->bench.is_active)
-		print_benchmark(*ctx);
-	free(ctx);
+	algo_caller(&ctx);
+	clear_stack(&ctx.a.top);
+	clear_stack(&ctx.b.top);
+	if (ctx.bench.is_active)
+		print_benchmark(ctx);
 	return (0);
 }

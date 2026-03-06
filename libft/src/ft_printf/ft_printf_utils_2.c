@@ -6,25 +6,11 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:15:25 by maroard           #+#    #+#             */
-/*   Updated: 2026/02/01 19:22:02 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 12:46:14 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	init_flags(t_flags *fmt)
-{
-	fmt->minus = FALSE;
-	fmt->zero = FALSE;
-	fmt->dot = FALSE;
-	fmt->hash = FALSE;
-	fmt->space = FALSE;
-	fmt->plus = FALSE;
-	fmt->precision = 0;
-	fmt->width = 0;
-	fmt->padding = 0;
-	fmt->skip = 0;
-}
 
 void	update_flags(t_flags *fmt, const char type)
 {

@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 11:35:42 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/04 16:36:00 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/06 12:45:39 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static int	format_manager(t_ctx *ctx, const char *s, va_list *arg_p)
 	char	type;
 	int		len;
 
-	init_flags(&ctx->format);
 	type = parse_format(&ctx->format, s);
 	flags_priorities(&ctx->format, type);
 	read_argument(type, &ctx->arg, arg_p);
@@ -88,6 +87,7 @@ int	ft_printf_fd(int fd, const char *s, ...)
 	va_start(arg_p, s);
 	i = 0;
 	s_len = 0;
+	ft_memset(&ctx, 0, sizeof(ctx));
 	ctx.fd = fd;
 	while (s[i])
 	{
@@ -98,7 +98,7 @@ int	ft_printf_fd(int fd, const char *s, ...)
 		}
 		else
 		{
-			ft_putchar_fd(s[i++], fd);
+			ft_putchar_fd(s[i++], ctx.fd);
 			++s_len;
 		}
 	}
