@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 14:31:04 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/10 13:28:32 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/10 14:42:16 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	main(int argc, char *argv[])
 	ft_memset(&ctx, 0, sizeof(ctx));
 	ctx.is_checker = TRUE;
 	if (!initialization(argc, argv, &ctx) || !reader(&ctx))
-		return (ft_putstr_fd("Error\n", 2), -1);
+		return (ft_putstr_fd("Error\n", 2), clear_stack(&ctx.a.top), -1);
 	if (compute_disorder(ctx.a) > 0 || ctx.b.size > 0)
-		return (ft_putstr("KO\n"), 0);
+		return (ft_putstr("KO\n"), clear_stack(&ctx.a.top), 0);
 	ft_putstr("OK\n");
 	clear_stack(&ctx.a.top);
 	return (0);

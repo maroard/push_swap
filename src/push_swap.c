@@ -6,7 +6,7 @@
 /*   By: maroard <maroard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:20:32 by maroard           #+#    #+#             */
-/*   Updated: 2026/03/06 16:19:10 by maroard          ###   ########.fr       */
+/*   Updated: 2026/03/10 14:44:24 by maroard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 static void	algo_caller(t_ctx *ctx)
 {
+	if (!ctx->disorder)
+		return ;
 	if (ctx->a.size == 3 && ctx->strategy == ADAPTIVE)
 		return (ctx->bench.complexity = 0,
 			ctx->strategy = ADAPTIVE,
@@ -60,9 +62,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	ft_memset(&ctx, 0, sizeof(ctx));
 	if (!initialization(argc, argv, &ctx))
-		return (ft_putstr_fd("Error\n", 2), -1);
-	if (!ctx.disorder)
-		return (0);
+		return (ft_putstr_fd("Error\n", 2), clear_stack(&ctx.a.top), -1);
 	algo_caller(&ctx);
 	clear_stack(&ctx.a.top);
 	if (ctx.bench.is_active)
